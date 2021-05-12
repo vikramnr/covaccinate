@@ -6,23 +6,28 @@ const mongoose =  require('mongoose')
 const Alerts = require('../models/alerts')
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express", sessions: "empty" });
+  res.render("vacinate", { title: "Express", sessions: "" });
 });
 
 router.get('/alert', (req,res,next) => {
-  res.render("alert")
+  res.render("alert", {error: ''})
 })
 
 router.post('/alert', async(req,res,next) => {
 
-  const body = req.body
+  const {pincode, number} = req.body
+
   const newAlert = new Alerts({
-    pincode : req.body.pincode,
-    phoneNumber: req.body.number
+    pincode : pincode,
+    phoneNumber: number
   })
+
+  if(number.length != 10 || pincode.length !=6) {
+      return res.render("alert",{error: 'Pincode and Phone Number should be valid one'})
+  }
   const savedAlert = await newAlert.save()
   console.log(savedAlert)
-  res.render("alert")
+  res.render("alert",{error: `Alert created for ${pincode} and ${number} combination.`})
 })
 
 
@@ -49,7 +54,7 @@ router.get("/vacinate", async (req, res, next) => {
     }}
   );
   console.log(sessions['data']['sessions']);
-  return res.render("vacinate", { title: "Express", sessions: sessions['data']['sessions'] });
+  return res.render("vacinate", { title: "Express", sessions: sessions['data']['sessions'], error: '' });
 });
 
 module.exports = router;

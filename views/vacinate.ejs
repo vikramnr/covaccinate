@@ -11,11 +11,28 @@
     />
   </head>
   <body class="container fluid-container">
-    <h1>Search for Slots</h1>
+    <h1>Covid Vaccinations India | Search for Slots</h1>
+    <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="/vacinate">Search for Slots</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/alert">Alert on Telegram</a>
+  </li>
+</ul>
+<br>
+    <div style="" class="alert alert-info" role="alert">
+        Developed using CoWin API | Data refereshed every 30 minutes
+  </div>
     <form action="/" method="POST" class="row row-cols-lg-auto g-3 align-items-center">
       <div class="col-12">
         <div class="input-group">
-          <div class="input-group-text">#</div>
+          <div class="input-group-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mailbox" viewBox="0 0 16 16">
+                <path d="M4 4a3 3 0 0 0-3 3v6h6V7a3 3 0 0 0-3-3zm0-1h8a4 4 0 0 1 4 4v6a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a4 4 0 0 1 4-4zm2.646 1A3.99 3.99 0 0 1 8 7v6h7V7a3 3 0 0 0-3-3H6.646z"/>
+                <path d="M11.793 8.5H9v-1h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.354-.146l-.853-.854zM5 7c0 .552-.448 0-1 0s-1 .552-1 0a1 1 0 0 1 2 0z"/>
+              </svg>
+            </div>
           <input type="number" class="form-control" name="pincode" id="" max="999999" placeholder="600001" />
       </div>
       </div>
@@ -37,10 +54,10 @@
               More Details
             </a>
           </div>
-          <span class="badge bg-primary rounded-pill"><%=session.available_capacity%> Seats</span> 
+          <span class="badge bg-primary rounded-pill"><%=session.available_capacity%> Seats</span>
           <br>
           <span class="badge bg-secondary rounded-pill">Age: <%=session.min_age_limit%>+</span>
-          
+
       </li>
       </div>
       <% }); %>
@@ -48,5 +65,12 @@
     <% } else{ %>
     <h4>No Vaccinations available now..</h4>
     <% } %>
+    <br>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+      Do your part - Wear a mask | Keep Social Distancing |  Developed and Maintained By <a href="github.com/vikramnr">vikramnr</a>
+      </div>
+    </footer>
   </body>
+
 </html>
