@@ -20,7 +20,7 @@ const db = mongoose.connect(process.env.MONGODB_URL, {
     console.log('connection sucessfull')
 });
 
-#console.log(db)
+console.log(db)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
